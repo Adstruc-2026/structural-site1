@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>结构 · 工程师 | 个人与专业作品集</title>
+  <meta name="description" content="一位热爱专业、热爱生活、爱分享的建筑结构工程师的个人网站：规范知识库、结构设计案例库、结构设计表现库，以及设计心得、案例点评与留言回复。" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+</head>
+<body>
+
+  <!-- ============ 顶部导航 ============ -->
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28">
+            <path d="M4 28 L16 4 L28 28 Z" fill="none" stroke="currentColor" stroke-width="2.2"/>
+            <path d="M10 28 L16 16 L22 28" fill="none" stroke="currentColor" stroke-width="2.2"/>
+            <line x1="4" y1="28" x2="28" y2="28" stroke="currentColor" stroke-width="2.2"/>
+          </svg>
+        </span>
+        <span class="brand-text">结构<em>·</em>工程师</span>
+      </a>
+
+      <nav class="nav" id="primaryNav">
+        <div class="nav-group">
+          <span class="nav-group-title">专业板块</span>
+          <a href="#codes" class="nav-link">规范知识库</a>
+          <a href="#cases" class="nav-link">结构设计案例库</a>
+          <a href="#gallery" class="nav-link">结构设计表现库</a>
+        </div>
+        <div class="nav-group">
+          <span class="nav-group-title">个人板块</span>
+          <a href="#notes" class="nav-link">设计心得</a>
+          <a href="#reviews" class="nav-link">案例点评</a>
+          <a href="#messages" class="nav-link">留言回复</a>
+        </div>
+        <a href="#contact" class="nav-cta">联系我</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="菜单" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ Hero ============ -->
+  <section class="hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <p class="hero-kicker">建筑结构工程师 · 个人作品集</p>
+      <h1 class="hero-title">热爱专业，热爱生活，<br/>更热爱把经验<span class="hl">分享</span>出去。</h1>
+      <p class="hero-sub">
+        这里收录我的规范研读笔记、结构设计案例与表现作品，也记录我对设计的理解、对案例的点评，
+        以及和同行、业主的答疑交流。欢迎随便逛逛。
+      </p>
+      <div class="hero-actions">
+        <a href="#codes" class="btn btn-primary">进入专业板块</a>
+        <a href="#notes" class="btn btn-ghost">读读设计心得</a>
+      </div>
+      <ul class="hero-stats">
+        <li><strong id="statCodes">40+</strong><span>规范条目</span></li>
+        <li><strong id="statCases">18</strong><span>设计案例</span></li>
+        <li><strong id="statNotes">12</strong><span>心得文章</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <main>
+    <!-- ============ 专业板块 ============ -->
+    <section class="block" id="professional">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">PROFESSIONAL</span>
+          <h2>专业板块</h2>
+          <p class="section-desc">把平时啃过的规范、做过的项目、画过的图，整理成可以查阅和复用的资料。</p>
+        </div>
+
+        <!-- 规范知识库 -->
+        <article class="sub" id="codes">
+          <div class="sub-head">
+            <h3><span class="num">01</span>规范知识库</h3>
+            <p>按专业分类的常用国家与行业标准，附核心要点与易错提示。可搜索、可按类别筛选。</p>
+          </div>
+
+          <div class="filterbar">
+            <input type="search" id="codeSearch" class="search" placeholder="搜索规范名称 / 编号 / 关键词…" aria-label="搜索规范" />
+            <div class="chips" id="codeChips" role="tablist">
+              <button class="chip is-active" data-cat="all">全部</button>
+              <button class="chip" data-cat="concrete">混凝土</button>
+              <button class="chip" data-cat="steel">钢结构</button>
+              <button class="chip" data-cat="foundation">地基基础</button>
+              <button class="chip" data-cat="seismic">抗震</button>
+              <button class="chip" data-cat="load">荷载</button>
+              <button class="chip" data-cat="highrise">高层</button>
+              <button class="chip" data-cat="reliability">可靠度</button>
+            </div>
+          </div>
+
+          <div class="card-grid" id="codeGrid"><!-- JS 渲染 --></div>
+        </article>
+
+        <!-- 结构设计案例库 -->
+        <article class="sub" id="cases">
+          <div class="sub-head">
+            <h3><span class="num">02</span>结构设计案例库</h3>
+            <p>从方案到施工图的不同结构体系项目，标注结构形式、规模与关键难点，供复盘与参考。</p>
+          </div>
+          <div class="card-grid case-grid" id="caseGrid"><!-- JS 渲染 --></div>
+        </article>
+
+        <!-- 结构设计表现库 -->
+        <article class="sub" id="gallery">
+          <div class="sub-head">
+            <h3><span class="num">03</span>结构设计表现库</h3>
+            <p>结构模型、节点详图、分析云图与建筑表现的融合——让结构"看得见、说得清"。</p>
+          </div>
+          <div class="gallery-grid" id="galleryGrid"><!-- JS 渲染 --></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 个人板块 ============ -->
+    <section class="block block-alt" id="personal">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">PERSONAL</span>
+          <h2>个人板块</h2>
+          <p class="section-desc">除了图纸，还有些关于设计的想法、对别人作品的看法，以及和大家的问答。</p>
+        </div>
+
+        <!-- 设计心得 -->
+        <article class="sub" id="notes">
+          <div class="sub-head">
+            <h3><span class="num">04</span>设计心得</h3>
+            <p>做设计这些年，一些慢慢沉淀下来的体会。不一定全对，但都是真刀真枪里磨出来的。</p>
+          </div>
+          <div class="note-list" id="noteList"><!-- JS 渲染 --></div>
+        </article>
+
+        <!-- 案例点评 -->
+        <article class="sub" id="reviews">
+          <div class="sub-head">
+            <h3><span class="num">05</span>案例点评</h3>
+            <p>读别人的项目，是最好的学习方式。挑一些有代表性的，聊聊结构选型和取舍。</p>
+          </div>
+          <div class="review-list" id="reviewList"><!-- JS 渲染 --></div>
+        </article>
+
+        <!-- 留言回复 -->
+        <article class="sub" id="messages">
+          <div class="sub-head">
+            <h3><span class="num">06</span>留言回复</h3>
+            <p>来自同行、学生与业主的常见问题，以及我的回复。也欢迎在下方留言。</p>
+          </div>
+          <div class="qa-list" id="qaList"><!-- JS 渲染 --></div>
+
+          <form class="msg-form" id="msgForm" novalidate>
+            <h4>给我留言</h4>
+            <div class="field-row">
+              <input type="text" id="msgName" placeholder="你的称呼" aria-label="称呼" required />
+              <input type="text" id="msgTopic" placeholder="主题（如：地基处理咨询）" aria-label="主题" required />
+            </div>
+            <textarea id="msgText" rows="4" placeholder="想聊点什么？结构问题、职业困惑、合作都行。" aria-label="留言内容" required></textarea>
+            <button type="submit" class="btn btn-primary">提交留言</button>
+            <p class="form-hint" id="formHint" hidden>已记录到本机（仅做演示，不会真正发送）。可在控制台查看。</p>
+          </form>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 联系 ============ -->
+    <section class="block contact" id="contact">
+      <div class="container contact-inner">
+        <h2>一起聊聊结构</h2>
+        <p>项目合作、技术交流、讲座分享，或只是想交个朋友——都欢迎。</p>
+        <div class="contact-links">
+          <a class="contact-card" href="mailto:hello@example.com">
+            <span class="ck">✉</span><span>邮箱</span><em>hello@example.com</em>
+          </a>
+          <a class="contact-card" href="#" onclick="return false;">
+            <span class="ck">✦</span><span>微信</span><em>struct-engineer</em>
+          </a>
+          <a class="contact-card" href="#" onclick="return false;">
+            <span class="ck">◎</span><span>公众号</span><em>结构工程师手记</em>
+          </a>
+        </div>
+        <p class="copyright">© <span id="year"></span> 结构 · 工程师 · 用心做结构，也用心生活。</p>
+      </div>
+    </section>
+  </main>
+
+  <button class="to-top" id="toTop" aria-label="回到顶部">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
