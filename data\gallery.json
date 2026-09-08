@@ -1,0 +1,62 @@
+[
+  {
+    "title": "结构三维整体模型",
+    "sub": "Revit / Tekla 整合",
+    "ico": "cube",
+    "hue": [
+      "#16568f",
+      "#2b8ad6"
+    ]
+  },
+  {
+    "title": "典型节点详图",
+    "sub": "梁柱刚接节点",
+    "ico": "node",
+    "hue": [
+      "#cf6c25",
+      "#e8833a"
+    ]
+  },
+  {
+    "title": "应力分析云图",
+    "sub": "Midas 位移云图",
+    "ico": "cloud",
+    "hue": [
+      "#0b2c4d",
+      "#1d6fb8"
+    ]
+  },
+  {
+    "title": "施工图出图",
+    "sub": "平法标注示范",
+    "ico": "draw",
+    "hue": [
+      "#16568f",
+      "#16568f"
+    ]
+  },
+  {
+    "title": "建筑表现融合",
+    "sub": "结构与表皮协同",
+    "ico": "fusion",
+    "hue": [
+      "#2b8ad6",
+      "#cf6c25"
+    ]
+  },
+  {
+    "title": "参数化找形",
+    "sub": "Grasshopper 优化",
+    "ico": "param",
+    "hue": [
+      "#1d6fb8",
+      "#0b2c4d"
+    ]
+  },
+  {
+    "title": "PixPin_2025-08-28_10-05-20",
+    "sub": "",
+    "ico": "cube",
+    "img": "uploads/gallery/PixPin_2025-08-28_10-05-20.png"
+  }
+]
