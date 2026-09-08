@@ -204,7 +204,7 @@ function initFilters() {
     const kw = search.value.trim().toLowerCase();
     const cat = (chips.find(c => c.classList.contains("is-active"))?.dataset.cat) || "all";
     const list = (DATA.codes || []).filter(c => {
-      const okCat = cat === "all" || c.cat === cat;
+      const okCat = cat === "all" || (cat === "other" ? !c.cat : c.cat === cat);
       const okKw = !kw || (c.name + c.no + c.sum + c.note + catLabel(c.cat)).toLowerCase().includes(kw);
       return okCat && okKw;
     });
