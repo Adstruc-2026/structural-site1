@@ -100,10 +100,13 @@ function renderCases(list) {
   const grid = $("#caseGrid");
   if (!list || !list.length) { grid.innerHTML = '<p style="color:var(--ink-soft)">暂无案例。</p>'; return; }
   grid.innerHTML = list.map(c => {
-    const bg = c.img
-      ? `background:url('${esc(c.img)}') center/cover no-repeat;`
+    // c.img / c.file 可能是图片也可能是 HTML 页面：图片当背景，HTML 当链接
+    const filePath = c.img || c.file || "";
+    const isImg = /\.(jpe?g|png|gif|webp|avif|svg)$/i.test(filePath);
+    const bg = isImg
+      ? `background:url('${esc(filePath)}') center/cover no-repeat;`
       : `background:linear-gradient(140deg, ${c.hue?.[0]||'#16568f'}, ${c.hue?.[1]||'#1d6fb8'});`;
-    const visual = c.img ? "" : thumbSVG("cube");
+    const visual = isImg ? "" : thumbSVG("cube");
     return `<div class="card case-card">
       <div class="case-thumb" style="${bg}">
         <span class="case-tag">${esc(c.type)}</span>${visual}
@@ -112,7 +115,7 @@ function renderCases(list) {
         <h4>${esc(c.title)}</h4>
         <div class="case-meta"><span>规模 <b>${esc(c.area)}</b></span><span>地区 <b>${esc(c.city)}</b></span></div>
         <p><b style="color:var(--blue-700)">关键难点：</b>${esc(c.hard)}</p>
-        ${c.file ? `<a class="case-link" href="${esc(c.file)}" target="_blank" rel="noopener">🔗 打开案例页面</a>` : ""}
+        ${filePath ? `<a class="case-link" href="${esc(filePath)}" target="_blank" rel="noopener">🔗 打开案例页面</a>` : ""}
       </div>
     </div>`;
   }).join("");
@@ -122,15 +125,29 @@ function renderGallery(list) {
   const grid = $("#galleryGrid");
   if (!list || !list.length) { grid.innerHTML = '<p style="color:var(--ink-soft)">暂无作品。</p>'; return; }
   grid.innerHTML = list.map(g => {
-    const bg = g.img
+    const hasImg = !!g.img;
+    const bg = hasImg
       ? `background:url('${esc(g.img)}') center/cover no-repeat;`
       : `background:linear-gradient(140deg, ${g.hue?.[0]||'#16568f'}, ${g.hue?.[1]||'#1d6fb8'});`;
-    const visual = g.img ? "" : thumbSVG(g.ico || "cube");
-    return `<div class="g-item" style="${bg}">
+    const visual = hasImg ? "" : thumbSVG(g.ico || "cube");
+    return `<div class="g-item" style="${bg}" data-has-img="${hasImg}">
       ${visual}
       <div class="g-label"><b>${esc(g.title)}</b><span>${esc(g.sub)}</span></div>
     </div>`;
   }).join("");
+  // 图片加载失败时回退到占位图（避免白卡）
+  grid.querySelectorAll('.g-item[data-has-img="true"]').forEach(el => {
+    const url = (el.getAttribute('style') || '').match(/url\('([^']+)'\)/);
+    if (!url) return;
+    const probe = new Image();
+    probe.onerror = () => {
+      const hue = el.querySelector('.g-label b')?.textContent || '';
+      el.style.background = '';
+      el.setAttribute('data-has-img', 'false');
+      el.insertAdjacentHTML('afterbegin', thumbSVG('cube'));
+    };
+    probe.src = url[1];
+  });
 }
 
 function renderNotes(list) {
