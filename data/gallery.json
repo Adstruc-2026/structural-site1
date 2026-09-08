@@ -1,14 +1,5 @@
 [
   {
-    "title": "应力分析云图",
-    "sub": "Midas 位移云图",
-    "ico": "cloud",
-    "hue": [
-      "#0b2c4d",
-      "#1d6fb8"
-    ]
-  },
-  {
     "title": "施工图出图",
     "sub": "平法标注示范",
     "ico": "draw",
