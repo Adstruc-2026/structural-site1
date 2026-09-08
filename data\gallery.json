@@ -1,14 +1,5 @@
 [
   {
-    "title": "结构三维整体模型",
-    "sub": "Revit / Tekla 整合",
-    "ico": "cube",
-    "hue": [
-      "#16568f",
-      "#2b8ad6"
-    ]
-  },
-  {
     "title": "典型节点详图",
     "sub": "梁柱刚接节点",
     "ico": "node",
