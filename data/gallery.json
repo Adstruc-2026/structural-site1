@@ -1,14 +1,5 @@
 [
   {
-    "title": "建筑表现融合",
-    "sub": "结构与表皮协同",
-    "ico": "fusion",
-    "hue": [
-      "#2b8ad6",
-      "#cf6c25"
-    ]
-  },
-  {
     "title": "参数化找形",
     "sub": "Grasshopper 优化",
     "ico": "param",
