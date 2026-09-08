@@ -92,6 +92,7 @@ function renderCodes(list) {
       <span class="tag">${catLabel(c.cat)}</span>
       <p>${esc(c.sum)}</p>
       <div class="note">要点：${esc(c.note)}</div>
+      ${c.file ? `<a class="file-link" href="${esc(c.file)}" target="_blank" rel="noopener">📄 查看规范 PDF</a>` : ""}
     </div>`).join("");
 }
 
@@ -111,6 +112,7 @@ function renderCases(list) {
         <h4>${esc(c.title)}</h4>
         <div class="case-meta"><span>规模 <b>${esc(c.area)}</b></span><span>地区 <b>${esc(c.city)}</b></span></div>
         <p><b style="color:var(--blue-700)">关键难点：</b>${esc(c.hard)}</p>
+        ${c.file ? `<a class="case-link" href="${esc(c.file)}" target="_blank" rel="noopener">🔗 打开案例页面</a>` : ""}
       </div>
     </div>`;
   }).join("");
@@ -133,7 +135,7 @@ function renderGallery(list) {
 
 function renderNotes(list) {
   const el = $("#noteList");
-  if (!list || !list.length) { el.innerHTML = '<p style="color:var(--ink-soft)">暂无心得。</p>'; return; }
+  if (!list || !list.length) { el.innerHTML = '<p style="color:var(--ink-soft)">暂无笔记。</p>'; return; }
   el.innerHTML = list.map(n => `
     <div class="note-item">
       <div class="note-date"><b>${esc(n.day)}</b><span>${esc(n.mon)}</span></div>
@@ -141,6 +143,8 @@ function renderNotes(list) {
         <h4>${esc(n.title)}</h4>
         <div class="tags">${(n.tags||[]).map(t => `<em>${esc(t)}</em>`).join("")}</div>
         <p>${esc(n.text)}</p>
+        ${n.images && n.images.length ? `<div class="note-imgs">${n.images.map(i => `<img src="${esc(i)}" alt="" loading="lazy"/>`).join("")}</div>` : ""}
+        ${n.videos && n.videos.length ? `<div class="note-vids">${n.videos.map(v => `<video src="${esc(v)}" controls preload="metadata"></video>`).join("")}</div>` : ""}
         <a class="more" href="#" onclick="return false;">阅读全文 →</a>
       </div>
     </div>`).join("");
